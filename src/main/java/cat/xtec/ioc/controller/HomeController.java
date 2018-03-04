@@ -16,8 +16,7 @@ public class HomeController {
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ModelAndView modelview = new ModelAndView("welcome");
-        modelview.getModelMap().addAttribute("benvinguda", "Benvingut Estoc de Medicaments!");
-        modelview.getModelMap().addAttribute("tagline", "Una aplicació de l'Institut Obert de Catalunya");
+        modelview.getModelMap().addAttribute("benvinguda", "INMOExpress");
         return modelview;
     }
 

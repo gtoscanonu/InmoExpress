@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>HibernateMysqlConfiguration.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Inmoexpress Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">cat.xtec.ioc.config</a> &gt; <span class="el_source">HibernateMysqlConfiguration.java</span></div><h1>HibernateMysqlConfiguration.java</h1><pre class="source lang-java linenums">package cat.xtec.ioc.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import javax.sql.DataSource;
+
+@Configuration
+@EnableTransactionManagement
+@PropertySource(value = {&quot;jdbc.properties&quot;, &quot;hibernate.properties&quot;})
+@Import(value = {HibernateConfiguration.class})
+<span class="nc" id="L17">public class HibernateMysqlConfiguration {</span>
+    @Autowired
+    private Environment environment;
+
+
+    @Bean
+    public DataSource dataSource() {
+<span class="nc" id="L24">        DriverManagerDataSource dataSource = new DriverManagerDataSource();</span>
+<span class="nc" id="L25">        dataSource.setDriverClassName(environment.getRequiredProperty(&quot;jdbc.driverClassName&quot;));</span>
+<span class="nc" id="L26">        dataSource.setUrl(environment.getRequiredProperty(&quot;jdbc.url&quot;));</span>
+<span class="nc" id="L27">        dataSource.setUsername(environment.getRequiredProperty(&quot;jdbc.username&quot;));</span>
+<span class="nc" id="L28">        dataSource.setPassword(environment.getRequiredProperty(&quot;jdbc.password&quot;));</span>
+<span class="nc" id="L29">        return dataSource;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

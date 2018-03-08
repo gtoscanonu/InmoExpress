@@ -52,10 +52,6 @@ public class Inmueble implements Serializable {
     @NotNull
     private int numBaños;
     
-    @Column(name = "Amueblado")
-    @NotNull
-    private Boolean amueblado;
-    
     @Column(name = "Extras")
     @Size(max=100)
     private String extras;
@@ -73,7 +69,6 @@ public class Inmueble implements Serializable {
         this.precio=precio;
         this.numHabitaciones=numHabitaciones;
         this.numBaños=numBaños;
-        this.amueblado=amueblado;
         this.extras=extras;
         this.descripcion=descripcion;
 }
@@ -188,20 +183,6 @@ public class Inmueble implements Serializable {
      */
     public void setNumBaños(int numBaños) {
         this.numBaños = numBaños;
-    }
-
-    /**
-     * @return the amueblado
-     */
-    public Boolean getAmueblado() {
-        return amueblado;
-    }
-
-    /**
-     * @param amueblado the amueblado to set
-     */
-    public void setAmueblado(Boolean amueblado) {
-        this.amueblado = amueblado;
     }
 
     /**

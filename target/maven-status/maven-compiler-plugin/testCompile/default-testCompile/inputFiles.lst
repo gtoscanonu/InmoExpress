@@ -1,6 +1,6 @@
-/home/geovany/NetbeansProyects/Proyecto/InmoExpress/Inmoexpress/src/test/java/cat/xtec/ioc/config/SpringTestConfig.java
-/home/geovany/NetbeansProyects/Proyecto/InmoExpress/Inmoexpress/src/test/java/cat/xtec/ioc/config/EmbeddedDatabaseTestConfig.java
-/home/geovany/NetbeansProyects/Proyecto/InmoExpress/Inmoexpress/src/test/java/cat/xtec/ioc/repository/VendedorServiceTest.java
-/home/geovany/NetbeansProyects/Proyecto/InmoExpress/Inmoexpress/src/test/java/cat/xtec/ioc/domain/VendedorTest.java
-/home/geovany/NetbeansProyects/Proyecto/InmoExpress/Inmoexpress/src/test/java/cat/xtec/ioc/SpringJNDIRunner.java
-/home/geovany/NetbeansProyects/Proyecto/InmoExpress/Inmoexpress/src/test/java/cat/xtec/ioc/repository/VendedorTest.java
+/home/geovany/NetbeansProyects/IOC_PROYECT/InmoExpress/src/test/java/cat/xtec/ioc/repository/VendedorServiceTest.java
+/home/geovany/NetbeansProyects/IOC_PROYECT/InmoExpress/src/test/java/cat/xtec/ioc/SpringJNDIRunner.java
+/home/geovany/NetbeansProyects/IOC_PROYECT/InmoExpress/src/test/java/cat/xtec/ioc/repository/VendedorTest.java
+/home/geovany/NetbeansProyects/IOC_PROYECT/InmoExpress/src/test/java/cat/xtec/ioc/repository/InmuebleTest.java
+/home/geovany/NetbeansProyects/IOC_PROYECT/InmoExpress/src/test/java/cat/xtec/ioc/config/EmbeddedDatabaseTestConfig.java
+/home/geovany/NetbeansProyects/IOC_PROYECT/InmoExpress/src/test/java/cat/xtec/ioc/config/SpringTestConfig.java

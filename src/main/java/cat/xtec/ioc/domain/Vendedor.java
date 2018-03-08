@@ -29,6 +29,9 @@ public class Vendedor implements Serializable {
     @Column(name = "id_Vendedor")
     private Integer idVendedor;
     
+    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    private Set<Inmueble> inmuebles;
+    
     @NotNull
     @Size(max = 100)
     @Column(name = "nombre")
@@ -40,7 +43,7 @@ public class Vendedor implements Serializable {
     private String email;
     
     @NotNull
-    @Column(name = "telefoono")
+    @Column(name = "telefono")
     private Integer telefono;
     
     public Vendedor(){}
@@ -107,6 +110,20 @@ public class Vendedor implements Serializable {
      */
     public void setTelefono(Integer telefono) {
         this.telefono = telefono;
+    }
+
+    /**
+     * @return the inmuebles
+     */
+    public Set<Inmueble> getInmuebles() {
+        return inmuebles;
+    }
+
+    /**
+     * @param inmuebles the inmuebles to set
+     */
+    public void setInmuebles(Set<Inmueble> inmuebles) {
+        this.inmuebles = inmuebles;
     }
 
 }

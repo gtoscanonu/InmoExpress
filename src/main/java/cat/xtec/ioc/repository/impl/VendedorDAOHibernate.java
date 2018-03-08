@@ -45,6 +45,11 @@ public class VendedorDAOHibernate implements VendedorDAORepository {
         getSession().merge(vendedor);
     }
     
+    @Override
+    public void deleteVendedor(Vendedor vendedor){
+        getSession().delete(vendedor);
+    }
+    
     private Criteria createEntityCriteria(){
        return getSession().createCriteria(Vendedor.class);
     }

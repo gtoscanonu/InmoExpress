@@ -4,10 +4,14 @@ cat/xtec/ioc/controller/HomeController.class
 cat/xtec/ioc/config/HibernateConfiguration.class
 cat/xtec/ioc/config/GlassfishPoolConfiguration.class
 cat/xtec/ioc/domain/Inmueble.class
+cat/xtec/ioc/repository/InmuebleDAORepository.class
 cat/xtec/ioc/repository/impl/VendedorDAOHibernate.class
 cat/xtec/ioc/config/ServicesConfig.class
-cat/xtec/ioc/repository/impl/InmuebleHibernate.class
+cat/xtec/ioc/service/impl/VendedorDAOServiceImpl.class
+cat/xtec/ioc/service/impl/InmuebleServiceImpl.class
 cat/xtec/ioc/config/DAOConfig.class
 cat/xtec/ioc/domain/Vendedor.class
 cat/xtec/ioc/config/HibernateMysqlConfiguration.class
-cat/xtec/ioc/repository/InmuebleRepository.class
+cat/xtec/ioc/repository/impl/InmuebleDAOHibernate.class
+cat/xtec/ioc/service/VendedorDAOService.class
+cat/xtec/ioc/service/InmuebleService.class

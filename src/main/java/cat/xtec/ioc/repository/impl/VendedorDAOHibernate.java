@@ -14,13 +14,19 @@ import java.util.List;
 /**
  *
  * @author root
- */
+*/
 @Transactional
 @Repository("vendedorDAOHibernate") //@Repository(“VendedorHibernate”) indica que quan la classe sigui esca­ne­jada per Spring es cre­arà un bean ano­me­nat VendedorHibernate
 public class VendedorDAOHibernate implements VendedorDAORepository {
     
     @Autowired
     private SessionFactory sessionFactory;
+    
+    @Override
+    public List<Vendedor> getAllVendedor() {
+        Criteria criteria = createEntityCriteria();
+        return (List<Vendedor>) criteria.list();
+    }
 
     @Override
     public Vendedor getVendedorByIdVendedor(Integer idVendedor) {

@@ -12,13 +12,15 @@ public interface InmuebleDAORepository {
     
     Inmueble getInmuebleById(Integer id_vivienda);
     
-    Set<Inmueble> getAllInmuebles(Integer idVendedor);
+    Set<Inmueble> getAllInmueblesByVendedor(Integer idVendedor);
     
     List<Inmueble> getInmueblesByTipus(String tipo);
+    
+    List<Inmueble> getAllInmuebles();
     
     void addInmueble(Inmueble inmueble, Integer idVendedor);
     
     void updateInmueble(Inmueble inmueble);
     
-    void deleteInmueble(Inmueble inmueble);
+    void deleteInmueble(Inmueble inmueble, Integer idVendedor);
 }

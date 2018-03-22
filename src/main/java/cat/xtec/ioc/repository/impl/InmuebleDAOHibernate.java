@@ -1,22 +1,24 @@
 package cat.xtec.ioc.repository.impl;
 
-import org.hibernate.Criteria;
 import cat.xtec.ioc.domain.Inmueble;
 import cat.xtec.ioc.domain.Vendedor;
 import cat.xtec.ioc.repository.InmuebleDAORepository;
 import cat.xtec.ioc.repository.VendedorDAORepository;
+import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import javax.transaction.Transactional;
-import org.hibernate.SessionFactory;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Set;
 
 @Transactional
-@Repository("inmuebleDAOHibernate")
+@Repository
 public class InmuebleDAOHibernate implements InmuebleDAORepository {
 
    @Autowired 
@@ -31,7 +33,7 @@ public class InmuebleDAOHibernate implements InmuebleDAORepository {
     }
 
     @Override
-    public Set<Inmueble> getAllInmuebles(Integer idVendedor) {
+    public Set<Inmueble> getAllInmueblesByVendedor(Integer idVendedor) {
        Vendedor vendedor = vendedorDAORepository.getVendedorByIdVendedor(idVendedor);
         return vendedor.getInmuebles();
     }
@@ -43,7 +45,6 @@ public class InmuebleDAOHibernate implements InmuebleDAORepository {
 
     @Override
     public void addInmueble(Inmueble inmueble, Integer idVendedor) {        
-       // getSession().saveOrUpdate(inmueble); No llegaremos a utilizar esta función habría que eliminarla
         Vendedor vendedor = vendedorDAORepository.getVendedorByIdVendedor(idVendedor);
         Set<Inmueble> inmuebles = vendedor.getInmuebles();
         if (inmuebles != null){
@@ -60,11 +61,34 @@ public class InmuebleDAOHibernate implements InmuebleDAORepository {
         getSession().merge(inmueble);
     }
     
-    @Override
-    public void deleteInmueble(Inmueble inmueble) {
-        getSession().delete(inmueble);
+   @Override
+    public void deleteInmueble(Inmueble inmueble, Integer idVendedor) {
+        Vendedor vendedor = vendedorDAORepository.getVendedorByIdVendedor(idVendedor);
+        Set<Inmueble> inmuebles = vendedor.getInmuebles();
+            inmuebles.remove(inmueble);
+            vendedor.setInmuebles(inmuebles);
+            vendedorDAORepository.updateVendedor(vendedor);        
     }
-
+    
+    @Override 
+    public List<Inmueble> getAllInmuebles(){
+        List<Inmueble> allInmuebles = new ArrayList<Inmueble>();
+     
+          List<Vendedor> vendedores = vendedorDAORepository.getAllVendedor();
+          
+          for (Vendedor vendedor : vendedores ){
+              Set<Inmueble> inmuebles = vendedor.getInmuebles();
+              
+              for (Inmueble inmueble : inmuebles){
+                  allInmuebles.add(inmueble);
+              }
+         }
+        
+        return allInmuebles;
+    
+    }
+    
+    
     protected Session getSession() {
         return sessionFactory.getCurrentSession();
     }

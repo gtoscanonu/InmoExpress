@@ -1,11 +1,13 @@
 package cat.xtec.ioc.domain;
 
 import java.io.Serializable;
+import java.sql.Blob;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import static javax.swing.text.StyleConstants.Size;
 import javax.validation.constraints.NotNull;
@@ -21,7 +23,7 @@ public class Inmueble implements Serializable {
     
     private static long serialVersionUID = 1L;
     @Id
-    @NotNull
+  //  @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_vivienda")
     private Integer idVivienda;
@@ -59,6 +61,9 @@ public class Inmueble implements Serializable {
     @Column(name = "Descripcion")
     @Size(max = 100)
     private String descripcion;
+    
+    @Column(name = "imagen") //,  nullable=false, columnDefinition="mediumblob"
+    private String imagen;
 
     public Inmueble(){};
 
@@ -211,6 +216,20 @@ public class Inmueble implements Serializable {
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
 }

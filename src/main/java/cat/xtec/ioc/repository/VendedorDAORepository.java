@@ -9,6 +9,7 @@ import java.util.List;
  * @author root
  */
 public interface VendedorDAORepository {
+    List<Vendedor> getAllVendedor();
     Vendedor getVendedorByIdVendedor(Integer idVendedor);
     Vendedor getVendedorByNombre(String nombre);
     void addVendedor(Vendedor vendedor);

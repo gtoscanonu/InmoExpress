@@ -56,8 +56,8 @@ public class InmuebleServiceImpl implements InmuebleService {
     }
 
     @Override
-    public void deleteInmueble(Inmueble inmueble) {
-        inmuebleDAORepository.deleteInmueble(inmueble);
+    public void deleteInmueble(Inmueble inmueble, Integer idVendedor) {
+        inmuebleDAORepository.deleteInmueble(inmueble, idVendedor);
     }
     
 }

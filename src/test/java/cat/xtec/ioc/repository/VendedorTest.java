@@ -36,6 +36,7 @@ public class VendedorTest {
     //private  VendedorDAOService vendedorDAORepository;
     private VendedorDAORepository vendedorDAORepository;
 
+    // Crear un vendedor
     @Test
     @Transactional
     //@Rollback(false)
@@ -65,7 +66,8 @@ public class VendedorTest {
         assertEquals(vendedor.getIdVendedor(), vendedorDB.getIdVendedor());
         
         vendedorDAORepository.deleteVendedor(vendedor);
-        
+        assertNull(vendedorDAORepository.getVendedorByIdVendedor(vendedor.getIdVendedor()));
+
     }
     
     @Test
@@ -87,7 +89,7 @@ public class VendedorTest {
     
     @Test
     @Transactional
-    @Rollback(false)
+    //@Rollback(false)
     public void getVendedorByIdVendedor() {
         Vendedor vendedor = new Vendedor();
         vendedor.setNombre("Inmobiliaria4");
@@ -99,6 +101,28 @@ public class VendedorTest {
         
         Vendedor vendedorDB = vendedorDAORepository.getVendedorByNombre("Inmobiliaria4");
         assertEquals(vendedor.getIdVendedor(), vendedorDB.getIdVendedor());
+        
+    }
+    
+    @Test
+    @Transactional
+    //@Rollback(false)
+    public void UpdateVendedor() {
+        Vendedor vendedor = new Vendedor();
+        vendedor.setNombre("Inmobiliaria4");
+        vendedor.setEmail("inmobiliaria1@gmail.com");
+        vendedor.setTelefono(123123123);
+        assertNull(vendedor.getIdVendedor());
+        vendedorDAORepository.addVendedor(vendedor);
+        assertNotNull(vendedor.getIdVendedor());
+        
+        String nuevoemail = "NuevoEmail@imbernes.com";
+        vendedor.setEmail(nuevoemail);
+        vendedorDAORepository.updateVendedor(vendedor);
+        
+        Vendedor vendedorDB = vendedorDAORepository.getVendedorByNombre("Inmobiliaria4");
+        assertEquals(vendedor.getIdVendedor(), vendedorDB.getIdVendedor());
+        assertEquals(nuevoemail, vendedorDB.getEmail());
         
     }
 }

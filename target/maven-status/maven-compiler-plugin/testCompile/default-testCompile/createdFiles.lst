@@ -1,6 +1,5 @@
+cat/xtec/ioc/config/EmbeddedDatabaseTestConfig.class
 cat/xtec/ioc/SpringJNDIRunner.class
 cat/xtec/ioc/repository/InmuebleTest.class
 cat/xtec/ioc/config/SpringTestConfig.class
 cat/xtec/ioc/repository/VendedorTest.class
-cat/xtec/ioc/repository/VendedorServiceTest.class
-cat/xtec/ioc/config/EmbeddedDatabaseTestConfig.class

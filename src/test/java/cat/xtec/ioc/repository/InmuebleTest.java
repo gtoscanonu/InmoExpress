@@ -29,8 +29,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(classes = {DAOConfig.class, EmbeddedDatabaseTestConfig.class})
-@ContextConfiguration(classes = {DAOConfig.class, HibernateMysqlConfiguration.class})
+@ContextConfiguration(classes = {DAOConfig.class, EmbeddedDatabaseTestConfig.class})
+//@ContextConfiguration(classes = {DAOConfig.class, HibernateMysqlConfiguration.class})
 
 public class InmuebleTest {
     @Autowired
@@ -42,7 +42,7 @@ public class InmuebleTest {
     @Test
     @Transactional
   //  @Rollback(false)
-    public void createInmueble()throws IOException, SQLException {
+    public void createInmueble(){
         Vendedor vendedor = new Vendedor();
         vendedor.setNombre("propietario55");
         vendedor.setTelefono(132456465);
@@ -65,62 +65,4 @@ public class InmuebleTest {
         assertEquals(1, inmuebles.size());
         
     }    
-    
-    @Test
-    @Transactional
-    public void getInmuebleByIdVivienda(){
-        Vendedor vendedor = new Vendedor();
-        vendedor.setNombre("propietario55");
-        vendedor.setTelefono(132456465);
-        vendedor.setEmail("propietario@email.com");
-        vendedorDAOService.addVendedor(vendedor);
-        
-        Inmueble inmueble = new Inmueble();
-        inmueble.setTipo("piso");
-        inmueble.setSuperficie(12323);
-        inmueble.setPrecio(1233);
-        inmueble.setUbicacion("Ubicacion");
-        inmueble.setNumHabitaciones(3);
-        inmueble.setNumBaños(1);
-        inmueble.setDescripcion("buen barrio");
-        inmueble.setExtras("COn ascensor");
-        
-        inmuebleService.addInmueble(inmueble, vendedor.getIdVendedor());
-        
-       Inmueble inmuebleDB = inmuebleService.getInmuebleById(inmueble.getIdVivienda());
-       assertEquals(inmueble.getIdVivienda(), inmuebleDB.getIdVivienda());
-        
-    }    
-    
-    
-    @Test
-    @Transactional
-  //  @Rollback(false)
-    public void updateInmueble(){
-        Vendedor vendedor = new Vendedor();
-        vendedor.setNombre("propietario55");
-        vendedor.setTelefono(132456465);
-        vendedor.setEmail("propietario@email.com");
-        vendedorDAOService.addVendedor(vendedor);
-        
-        Inmueble inmueble = new Inmueble();
-        inmueble.setTipo("piso");
-        inmueble.setSuperficie(12323);
-        inmueble.setPrecio(1233);
-        inmueble.setUbicacion("Ubicacion");
-        inmueble.setNumHabitaciones(3);
-        inmueble.setNumBaños(1);
-        inmueble.setDescripcion("buen barrio");
-        inmueble.setExtras("COn ascensor");
-        
-        inmuebleService.addInmueble(inmueble, vendedor.getIdVendedor());
-        int numeroHab= 10;
-        inmueble.setNumHabitaciones(numeroHab);
-        inmuebleService.updateInmueble(inmueble);
-      
-        Inmueble inmuebleDB = inmuebleService.getInmuebleById(inmueble.getIdVivienda());
-        
-        assertEquals(inmueble, inmuebleDB.getNumHabitaciones());
-    }    
-    
-}
+}    
